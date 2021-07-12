@@ -84,13 +84,13 @@ func ParseComment(s string) (string, string) {
 	for idx++; idx < len(lines); idx++ {
 		line := walk.CommentValue(lines[idx])
 		if line != "" {
-			example = append(example, fmt.Sprintf("`%s`", line))
+			example = append(example, fmt.Sprintf("%s", line))
 		}
 	}
-	eg := strings.Join(example, " <br> ")
+	eg := strings.Join(example, " &#13;&#10; ")
 	d := strings.Join(desc, " ")
 	if len(eg) > 0 {
-		d = d + " <br> Example: <br> " + eg
+		d = d + " &#13;&#10; Example: &#13;&#10; " + fmt.Sprintf("<code>%s</code>", eg)
 	}
 	return d, eg
 }

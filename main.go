@@ -69,7 +69,7 @@ func main() {
 		for _, row := range rows {
 			params = append(params, []string{
 				row[0],
-				row[1],
+				strings.ReplaceAll(row[1], "|", "&#124;"),  // replace all pipe symbols with their ACSII representation, because they break the markdown table
 				fmt.Sprintf(
 					"<code>%s</code>",  // use a html code block instead of backtics so the whole block get highlighted
 					strings.ReplaceAll(  // replace all newlines, they generate new table columns with tablewriter
